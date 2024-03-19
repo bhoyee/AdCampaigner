@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using AdCampaigner.Models.TargetingOptions;
 using AdCampaigner.Models.Budget;
+using AdCampaigner.Models.JoinTables;
 
 namespace AdCampaigner.Models.Campaigns
 {
@@ -32,6 +33,13 @@ namespace AdCampaigner.Models.Campaigns
         [Range(0, double.MaxValue, ErrorMessage = "Total Budget must be a non-negative value")]
         public decimal TotalBudget { get; set; }
 
+        [Required(ErrorMessage = "Duration is required")]
+        public int Duration { get; set; } // Duration in days, weeks, months, etc.
+
+        [Required(ErrorMessage = "Objectives are required")]
+        public string Objectives { get; set; } // Campaign objectives
+
+
         [Required(ErrorMessage = "Status is required")]
         public CampaignStatus Status { get; set; }
 
@@ -41,6 +49,9 @@ namespace AdCampaigner.Models.Campaigns
         public ICollection<TargetingOptions.TargetingOptions> Targets { get; set; }
         public ICollection<Budget.Budget> Budgets { get; set; }
         public ICollection<PerformanceAnalytics.PerformanceAnalytics> Analytics { get; set; }
+
+        public ICollection<UserCampaign> UserCampaigns { get; set; } // Navigation property for UserCampaign join table
+
     }
 
     public enum CampaignStatus

@@ -1,8 +1,0 @@
-C:\Users\Bhoyee-pc\Desktop\AdCampaigner\obj\Debug\net6.0\AdCampaigner.csproj.AssemblyReference.cache
-C:\Users\Bhoyee-pc\Desktop\AdCampaigner\obj\Debug\net6.0\AdCampaigner.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Bhoyee-pc\Desktop\AdCampaigner\obj\Debug\net6.0\AdCampaigner.AssemblyInfoInputs.cache
-C:\Users\Bhoyee-pc\Desktop\AdCampaigner\obj\Debug\net6.0\AdCampaigner.AssemblyInfo.cs
-C:\Users\Bhoyee-pc\Desktop\AdCampaigner\obj\Debug\net6.0\AdCampaigner.csproj.CoreCompileInputs.cache
-C:\Users\Bhoyee-pc\Desktop\AdCampaigner\obj\Debug\net6.0\AdCampaigner.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Bhoyee-pc\Desktop\AdCampaigner\obj\Debug\net6.0\AdCampaigner.RazorAssemblyInfo.cache
-C:\Users\Bhoyee-pc\Desktop\AdCampaigner\obj\Debug\net6.0\AdCampaigner.RazorAssemblyInfo.cs
