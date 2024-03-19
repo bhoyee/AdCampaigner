@@ -8,6 +8,9 @@ namespace AdCampaigner.Models.TargetingOptions
 
         // Targeting options properties
         // E.g., demographics, interests, geographic location
+        public string Demographics { get; set; }
+        public string Interests { get; set; }
+        public string GeographicLocation { get; set; }
 
         // Foreign key
         public int CampaignId { get; set; }
