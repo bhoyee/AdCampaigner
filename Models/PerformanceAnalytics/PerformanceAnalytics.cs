@@ -8,6 +8,10 @@ namespace AdCampaigner.Models.PerformanceAnalytics
 
         // Performance metrics properties
         // E.g., impressions, clicks, conversions, ROI
+        public int Clicks { get; set; }
+        public int Impressions { get; set; }
+        public int Conversions { get; set; }
+        public decimal ROI { get; set; }
 
         // Foreign key
         public int CampaignId { get; set; }
