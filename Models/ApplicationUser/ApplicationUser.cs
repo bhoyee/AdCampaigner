@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace AdCampaigner.Models.ApplicationUser
 {
-    public class ApplicationUser : IdentityUser
+    public class ApplicationUser : IdentityUser<string>
     {
         // Additional properties
         public string FullName { get; set; } // User's full name
