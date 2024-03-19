@@ -6,6 +6,7 @@ using AdCampaigner.Models.PerformanceAnalytics;
 using AdCampaigner.Models.Setting;
 using AdCampaigner.Models.TargetingOptions;
 using AdCampaigner.Models.JoinTables;
+using Microsoft.AspNetCore.Identity;
 
 namespace AdCampaigner.Data
 {
@@ -14,7 +15,6 @@ namespace AdCampaigner.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
-
         }
 
         public DbSet<Campaign> Campaigns { get; set; }
@@ -28,6 +28,9 @@ namespace AdCampaigner.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            // Ignore IdentityUserRole<string> entity
+            modelBuilder.Ignore<IdentityUserRole<string>>();
 
             modelBuilder.Entity<Campaign>()
                 .HasMany(c => c.Targets)
@@ -62,6 +65,15 @@ namespace AdCampaigner.Data
 
             modelBuilder.Entity<UserCampaign>()
                 .ToTable("UserCampaigns"); // Adjust table name if needed
+
+            // Specify column types for TotalBudget property
+            modelBuilder.Entity<Campaign>()
+                .Property(c => c.TotalBudget)
+                .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity<Budget>()
+                .Property(b => b.TotalBudget)
+                .HasColumnType("decimal(18, 2)");
         }
     }
 }
