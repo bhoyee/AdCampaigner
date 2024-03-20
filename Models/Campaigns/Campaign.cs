@@ -18,19 +18,17 @@ namespace AdCampaigner.Models.Campaigns
         public string Description { get; set; }
 
         [Required(ErrorMessage = "Start Date is required")]
-        [Display(Name = "Start Date")]
+     
         [DataType(DataType.Date)]
-        [FutureDate(ErrorMessage = "Start Date must be in the future")]
         public DateTime StartDate { get; set; }
 
         [Required(ErrorMessage = "End Date is required")]
         [Display(Name = "End Date")]
         [DataType(DataType.Date)]
-        [DateAfter(nameof(StartDate), ErrorMessage = "End Date must be after Start Date")]
         public DateTime EndDate { get; set; }
 
         [Required(ErrorMessage = "Total Budget is required")]
-        [Range(0, double.MaxValue, ErrorMessage = "Total Budget must be a non-negative value")]
+        [System.ComponentModel.DataAnnotations.Range(0, double.MaxValue, ErrorMessage = "Total Budget must be a non-negative value")]
         public decimal TotalBudget { get; set; }
 
         [Required(ErrorMessage = "Duration is required")]
@@ -79,33 +77,5 @@ namespace AdCampaigner.Models.Campaigns
         }
     }
 
-    // Custom validation attribute for date after validation
-    public class DateAfterAttribute : ValidationAttribute
-    {
-        private readonly string _dateToCompareTo;
 
-        public DateAfterAttribute(string dateToCompareTo)
-        {
-            _dateToCompareTo = dateToCompareTo;
-        }
-
-        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
-        {
-            var property = validationContext.ObjectType.GetProperty(_dateToCompareTo);
-            if (property == null)
-            {
-                return new ValidationResult($"Unknown property {_dateToCompareTo}");
-            }
-
-            var dateToCompareToValue = (DateTime)property.GetValue(validationContext.ObjectInstance);
-            var date = (DateTime)value;
-
-            if (date <= dateToCompareToValue)
-            {
-                return new ValidationResult(ErrorMessage);
-            }
-
-            return ValidationResult.Success;
-        }
-    }
 }
